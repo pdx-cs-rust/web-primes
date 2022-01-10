@@ -3,7 +3,7 @@ pub use num_bigint::BigUint;
 use glass_pumpkin::prime::check;
 use num_bigint::RandBigInt;
 
-/// Produce a prime in the range `2**n-1..=2**n`.
+/// Produce a randomly-chosen prime in the range `2**n-1..=2**n`.
 // Strategy: try random integers in-range forced to odd
 // until one of them passes the `check()` test.
 pub fn prime(nbits: u32) -> BigUint {

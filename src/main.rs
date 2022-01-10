@@ -10,11 +10,13 @@ use prime::*;
 
 use tide::prelude::*;
 
+/// Form parameter struct for `serde`.
 #[derive(Debug, Deserialize)]
 struct Bits {
     bits: u32,
 }
 
+/// Actual web service.
 #[async_std::main]
 async fn main() -> tide::Result<()> {
     let mut app = tide::new();
@@ -24,6 +26,9 @@ async fn main() -> tide::Result<()> {
     Ok(())
 }
 
+/// Respond to a request for a specific prime.
+// XXX Currently the web server spins on requests for 0-bit or 1-bit primes; also will spin for
+// unacceptably long on requests for very large primes.
 async fn request_prime(_req: tide::Request<()>) -> tide::Result {
     Ok(tide::Response::builder(tide::StatusCode::Ok)
         .body(
@@ -47,6 +52,8 @@ async fn request_prime(_req: tide::Request<()>) -> tide::Result {
     )
 }
 
+/// Respond to a request for the web form allowing the user to request a random prime of a
+/// specified number of bits.
 async fn prime_bits(mut req: tide::Request<()>) -> tide::Result {
     let Bits { bits } = req.body_form().await?;
     let prime = prime(bits);
