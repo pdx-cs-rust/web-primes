@@ -2,12 +2,12 @@
 name = "web-primes"
 version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+authors = ["Bart Massey <bart@cs.pdx.edu>"]
+license-file = "LICENSE.txt"
 
 [dependencies.async-std]
 version = "1.10"
-features = ["std", "attributes"]
+features = ["attributes"]
 
 [dependencies.num-bigint]
 version = "0.4"
