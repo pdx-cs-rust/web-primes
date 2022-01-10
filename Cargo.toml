@@ -9,6 +9,12 @@ edition = "2021"
 version = "1.10"
 features = ["std", "attributes"]
 
+[dependencies.num-bigint]
+version = "0.4"
+features = ["rand"]
+
 [dependencies]
+glass_pumpkin = "1.2"
+rand = "0.8"
 serde = "1.0"
 tide = "0.16"
